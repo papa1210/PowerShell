@@ -1,0 +1,10 @@
+# This file maintains a list mapping source files to testscripts in the project
+# and should not be modified manually.
+
+Src/test.c => tests/test_test1/test_test1.c
+Src/test.c => tests/test_test/test_test.c
+
+test_test3.c
+test_test3.c
+test_test3.c
+test_test3.c

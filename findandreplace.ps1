@@ -1,0 +1,1 @@
+(get-content test.mk) -replace ('test_test1','test_test2') | out-file test.mk
