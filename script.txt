@@ -1,0 +1,55 @@
+Esclipe & Powershell Command:
+- Run with file by Powershell
+	Powershell.exe -executionpolicy remotesigned -File  C:\Users\papa1\workspace\demo\a\for.ps1
+- Run Eclipse with Specific Workspace
+	[path to eclipse] -data [workspace path]
+	D:\Development\eclipse\eclipse.exe -data D:\Development\TestWorkspace
+- compile debug --> run in src folder
+	- ipg_comp --optfile ../ipg.cop --comp gcc -I"C:/Program Files/Sentinel/cantata/inc" -I"C:\Users\papa1\workspace\demo\Inc" -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Src/test.d" -MT"Src/test.o" -o "Src/test.o" "../Src/test.c"
+	ipg_comp: C:\Program Files\Sentinel\cantata\bin\ipg_comp.exe --> add to Path enviroment 
+- Link debug
+		- ipg_comp --optfile ../ipg.cop --link gcc  -o "demo.exe"  ./Src/test.o 
+		
+IMPORTANT note: cop,makefile need be available
+- Generate test script
+	o create new folder
+	o copy test script
+	o change split
+		- passing param ok
+	o change makefile
+	o change mapping.dat -->not tried
+		add text to file Add-Content -Path "mappings.dat" -Value "test_test3.c --> use to modify mappings.dat
+	o command to find and replace from cmd ( use for test.mk: make file & split)
+		(get-content test.mk) -replace ('test_test1','test_test2') | out-file test.mk
+	o test for looop
+		+ for.ps1
+		+ example : http://www.tomsitpro.com/articles/powershell-for-loop,2-845.html
+			
+			For ($i=0; $i -le 10; $i++) {
+				"10 * $i = " + (10 * $i)
+			}
+			
+			$i=1
+			Do {
+			$i
+			$i++
+			}
+			While ($i -le 10)
+
+			$i=1
+			Do {
+			$i
+			$i++
+			}
+			Until ($i -gt 10)
+
+
+	o add line to specific line ( use to modify makefile)
+		specific_content.ps1
+		
+- Build with cantata
+
+
+//////////////////Test area///////////////
+ipg_comp --optfile C:\Users\papa1\workspace\demo2\ipg.cop --comp gcc -I"C:/Program Files/Sentinel/cantata/inc" -I"C:\Users\papa1\workspace\demo\Inc" -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Src/test.d" -MT"Src/test.o" -o "Src/test.o" "C:\Users\papa1\workspace\demo2\Src\test.c"
+ipg_comp --optfile C:\Users\papa1\workspace\demo2\ipg.cop --link gcc  -o "demo.exe"  ./Src/test.o 
